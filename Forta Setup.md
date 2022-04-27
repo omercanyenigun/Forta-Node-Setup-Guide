@@ -83,13 +83,12 @@ sudo curl https://dist.forta.network/pgp.public -o /usr/share/keyrings/forta-key
 ```
 ```
 echo 'deb [signed-by=/usr/share/keyrings/forta-keyring.asc] https://dist.forta.network/repositories/apt stable main' | sudo tee -a /etc/apt/sources.list.d/forta.list
-
+```
 ```
 apt-get update
 ```
 ```
 apt-get install forta
-```
 ```
 
 - **En önemli yer! <your_passphrase> yerine bir şifre belirleyin ve bunu unutmayın.**
