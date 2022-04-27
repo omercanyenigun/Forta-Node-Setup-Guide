@@ -17,50 +17,38 @@
 - **4 CPU 16 RAM 100+ SSD Ubuntu 20.04**
 
 **Kurulum**
-- **Screen Sayfa Açma**
-```
-screen -S Anasayfa
-```
+
 - **Güncellemeler ve Docker Kurulumu**
 ```
-sudo apt-get update
+apt update
 ```
 ```
-sudo apt-get install \
-    ca-certificates \
-    curl \
-    gnupg \
-    lsb-release
+apt upgrade
+```
+```
+apt install ca-certificates curl gnupg lsb-release git htop
 ```
 ```
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
 ```
 ```
-echo \
-  "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu \
-  $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
-  ```
-```
-sudo apt-get update
+echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
 ```
 ```
-apt-cache madison docker-ce
-```
-**Son Komuttan sonra Packages yazan sıralı çıktılar almış olmanız gerek.**
-
-**Her şey doğruysa, Docker'ı kurduk. Şimdi, nodeun kendisini Forta'dan yüklemeye geçelim:**
-
-```
-cd /etc/docker
+apt-get update
 ```
 ```
-touch daemon.json
+apt-get install docker-ce docker-ce-cli containerd.io
 ```
 ```
-nano daemon.json
+docker version
+```
+```
+nano /etc/docker/daemon.json
 ```
 
-- **Nano deamon.json sayfası açıldığında aşağıdaki kodu girin**
+
+- **deamon.json sayfası açıldığında aşağıdaki kodu girin**
 
 ```
 
@@ -92,16 +80,18 @@ systemctl restart docker
 
 ```
 sudo curl https://dist.forta.network/pgp.public -o /usr/share/keyrings/forta-keyring.asc -s
+```
+```
 echo 'deb [signed-by=/usr/share/keyrings/forta-keyring.asc] https://dist.forta.network/repositories/apt stable main' | sudo tee -a /etc/apt/sources.list.d/forta.list
-sudo apt-get update
-sudo apt-get install forta
+
+```
+apt-get update
 ```
 ```
-sudo curl https://dist.forta.network/artifacts/forta -o /usr/local/bin/forta
+apt-get install forta
 ```
 ```
-sudo chmod 755 /usr/local/bin/forta
-```
+
 - **En önemli yer! <your_passphrase> yerine bir şifre belirleyin ve bunu unutmayın.**
 ```
 forta init --passphrase <your_passphrase>
@@ -120,39 +110,31 @@ Successfully initialized at /root/.forta
 
 - **Scanner address yazan yerde sizde çıkan adrese Tokensofta kayıtlı metamask adresinizden 0.1 Matic gönderin**
 
-**Forta Klasörüne Girme**
-```
-cd $HOME/.forta
-```
-yada 
-```
-cd ~/.forta
-```
 **Alchemy**
 
 - **https://www.alchemy.com/  adresinden bir profil oluşturun.**
-- **Create APP yerinden ETH Mainnet seçerek devam edin.** 
-- **Anasayfaya gelerek View Detals kısmından View Key e basarak oradaki HTTP ETH Mainnet linkini kopyalayın.**
+- **Create APP yerinden Polygon Mainnet seçerek devam edin.** 
+- **Anasayfaya gelerek View Detals kısmından View Key e basarak oradaki HTTP Polygon Mainnet linkini kopyalayın.**
 
 **Şu koddan devam edin**
 ```
-nanoconfig.yml
+nano /root/.forta/config.yml
 ```
-- **nanoconfig dosyasının içindeki**  
+- **config dosyasının içindekileri CTRL-K ile silin**  
+
 ```
-# The scan settings are used to retrieve the transactions that are analyzed
+chainId: 137
+
 scan:
   jsonRpc:
-    url: <required>
+    url: <buraya alchemyden kopyaladığınız linki girin>
 
-# The trace endpoint must support trace_block (such as alchemy)
 trace:
-  jsonRpc:
-    url: <required>
-
+  enabled: <buraya alchemyden kopyaladığınız linki girin>
 ```
-- **Bu yerdeki URL yerine Alchemy den kopyalamış olduğunuz linki yapıştırın. Her iki url: yazan yere**
-- **Kodu girdikten sonra CTRL-X Yapıp Sonra Y enter yaparak dosyayı kaydedin.**
+  
+  - **Kodu girdikten sonra CTRL-X Yapıp Sonra Y enter yaparak dosyayı kaydedin.**
+  
 
 - **Aşağıdaki kodu girdiğinizde**
 ```
@@ -165,22 +147,51 @@ Successfully sent the transaction!
 
 Please ensure that https://polygonscan.com/tx/0xc61929753a2d25f53c7c18d731d205e1f47e767206da3fe28266e528fa10041f succeeds before you do 'forta run'. This can take a while depending on the network load.
 ```
-**Node başlatma kodu**
 ```
-forta run --passphrase <şifreniz>
+systemctl enable forta
 ```
+```
+nano /lib/systemd/system/forta.service
+```
+- **Aşağıdaki gibi bir çıktı alacaksınız burada  <şifreniz> olan yeri değiştirin.**
 
-- **Kodu girdikten sonra şu çıktıyı almalısınız**
 ```
-INFO[2022-04-27T14:08:13Z] start-up check successful                    
-INFO[2022-04-27T14:08:13Z] replacing updater                             supervisor="disco.forta.network/bafybeihngcxtggkfuzr3f3wj27barxb3ssse3l4ibpo3b3d5tcwwadrdke@sha256:a3a0c9942927be0a42a7d9fba0dc5799f582595fd00943219dd5261518a9d00f" updater="disco.forta.network/bafybeihngcxtggkfuzr3f3wj27barxb3ssse3l4ibpo3b3d5tcwwadrdke@sha256:a3a0c9942927be0a42a7d9fba0dc5799f582595fd00943219dd5261518a9d00f"
-INFO[2022-04-27T14:08:13Z] ensuring local image                          image="disco.forta.network/bafybeihngcxtggkfuzr3f3wj27barxb3ssse3l4ibpo3b3d5tcwwadrdke@sha256:a3a0c9942927be0a42a7d9fba0dc5799f582595fd00943219dd5261518a9d00f" name=updater
+[Unit]
+Description=Forta
+After=network-online.target
+Wants=network-online.target systemd-networkd-wait-online.service
+
+StartLimitIntervalSec=500
+StartLimitBurst=5
+
+[Service]
+Environment="FORTA_DIR=/root/.forta/"
+Environment="FORTA_PASSPHRASE=<şifreniz>"
+Restart=on-failure
+RestartSec=15s
+
+ExecStart=/usr/bin/forta run
+
+[Install]
+WantedBy=multi-user.target
+```
+ - **Değiştirdikten sonra CTRL-X Yapıp Sonra Y enter yaparak dosyayı kaydedin.**
+
+**Node Görüntüleme**
+
+```
+systemctl daemon-reload
+```
+```
+systemctl restart forta
+```
+```
+systemctl status forta
 ```
 
 - **Bundan sonra https://dashboard.alchemyapi.io/ buradan nodeunuzu kontrol edebilirsiniz.**
 
 **Son Olarak Size gönderilecek olan formu doldurun.**
-Size gönderilecek olan formu doldurun.**
 - **1) metamask adresiniz**
 - **2)Node adresiniz (tarayıcı adresi)**
 - **3)Tam adınız.**
