@@ -152,7 +152,7 @@ systemctl enable forta
 ```
 nano /lib/systemd/system/forta.service
 ```
-- **Aşağıdaki gibi bir çıktı alacaksınız burada  <şifreniz> olan yeri değiştirin.**
+- **Dosyanın içindekileri CTRL-K ile silin <şifreniz> olan yeri değiştirin.**
 
 ```
 [Unit]
@@ -174,7 +174,7 @@ ExecStart=/usr/bin/forta run
 [Install]
 WantedBy=multi-user.target
 ```
- - **Değiştirdikten sonra CTRL-X Yapıp Sonra Y enter yaparak dosyayı kaydedin.**
+ - **Yukarıdaki kodu yapıştırdıktan sonra CTRL-X Yapıp Sonra Y enter yaparak dosyayı kaydedin.**
 
 **Node Görüntüleme**
 
