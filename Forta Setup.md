@@ -8,8 +8,8 @@
 - **KYC'yi TokenSoft üzerinden yapın. (KYC için mail gelmesi gerek)**
 
 **Ödüller**
-- **1 hafta - 250 000 FORT** 
-- **2 hafta - 250 000** 
+- **1. hafta - 250 000 FORT** 
+- **2. hafta - 250 000** 
 - **FORT toplam arz 1.000.000.000'dır, 2 haftalık bir node için ödül toplam miktarın sadece %0.05'idir + genel listeden sadece 200 doğrulayıcı seçilecektir, bu yüzden kendi kararınızı verin.**
 
 **Sistem Gereksinimleri**
