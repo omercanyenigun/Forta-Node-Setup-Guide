@@ -95,7 +95,7 @@ apt-get install forta
 ```
 forta init --passphrase <your_passphrase>
 ```
-- **Bu koddan sonra size bir cüzdan adresi verecek çıktı şöye gözükmelidir.**
+- **Bu koddan sonra size bir cüzdan adresi verecek çıktı şöyle gözükmelidir.**
 
 ```
 Scanner address: 0x43919032A43E0Ed2Dda502756D8D9D7324836920
