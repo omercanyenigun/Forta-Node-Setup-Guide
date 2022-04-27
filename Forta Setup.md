@@ -188,6 +188,19 @@ systemctl restart forta
 systemctl status forta
 ```
 
+- **Şu çıktıyı almalısınız.**
+
+```
+● forta.service - Forta
+     Loaded: loaded (/lib/systemd/system/forta.service; enabled; vendor preset: enabled)
+     Active: active (running) since Wed 2022-04-27 17:48:35 UTC; 21s ago
+   Main PID: 18113 (forta)
+      Tasks: 9 (limit: 9508)
+     Memory: 297.9M
+     CGroup: /system.slice/forta.service
+             └─18113 /usr/bin/forta run
+```
+
 - **Bundan sonra https://dashboard.alchemyapi.io/ buradan nodeunuzu kontrol edebilirsiniz.**
 
 **Son Olarak Size gönderilecek olan formu doldurun.**
