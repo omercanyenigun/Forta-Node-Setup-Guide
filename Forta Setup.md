@@ -128,7 +128,7 @@ yada
 ```
 cd ~/.forta
 ```
-**Alchamy**
+**Alchemy**
 
 - **https://www.alchemy.com/  adresinden bir profil oluşturun.**
 - **Create APP yerinden ETH Mainnet seçerek devam edin.** 
@@ -151,7 +151,7 @@ trace:
     url: <required>
 
 ```
-- **Bu yerdeki URL yerine Alchamy den kopyalamış olduğunuz linki yapıştırın. Her iki url: yazan yere**
+- **Bu yerdeki URL yerine Alchemy den kopyalamış olduğunuz linki yapıştırın. Her iki url: yazan yere**
 - **Kodu girdikten sonra CTRL-X Yapıp Sonra Y enter yaparak dosyayı kaydedin.**
 
 - **Aşağıdaki kodu girdiğinizde**
