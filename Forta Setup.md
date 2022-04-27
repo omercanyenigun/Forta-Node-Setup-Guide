@@ -129,7 +129,7 @@ scan:
     url: <buraya alchemyden kopyaladığınız linki girin>
 
 trace:
-  enabled: <buraya alchemyden kopyaladığınız linki girin>
+  enabled: false
 ```
   
   - **Kodu girdikten sonra CTRL-X Yapıp Sonra Y enter yaparak dosyayı kaydedin.**
