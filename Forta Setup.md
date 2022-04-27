@@ -108,6 +108,7 @@ forta init --passphrase <your_passphrase>
 ```
 - **Bu koddan sonra size bir cüzdan adresi verecek çıktı şöye gözükmelidir.**
 
+```
 Scanner address: 0x43919032A43E0Ed2Dda502756D8D9D7324836920
 
 Successfully initialized at /root/.forta
@@ -115,6 +116,7 @@ Successfully initialized at /root/.forta
 - Please make sure that all of the values in config.yml are set correctly.
 - Please fund your scanner address with some MATIC.
 - Please enable it for the chain ID in your config by doing 'forta register --owner-address <your_owner_wallet_address>'.
+```
 
 - **Scanner address yazan yerde sizde çıkan adrese Tokensofta kayıtlı metamask adresinizden 0.1 Matic gönderin**
 
@@ -156,7 +158,7 @@ trace:
 ```
 forta register --owner-address <metamask adresiniz> --passphrase <şifreniz>
 ```
-- **u çıktıyı almalısınız.**
+- **Şu çıktıyı almalısınız.**
 ```
 Sending a transaction to register your scan node to chain 1...
 Successfully sent the transaction!
@@ -183,6 +185,7 @@ Size gönderilecek olan formu doldurun.**
 - **2)Node adresiniz (tarayıcı adresi)**
 - **3)Tam adınız.**
 
+**End**
 
 - **https://t.me/testnetrun**
 
